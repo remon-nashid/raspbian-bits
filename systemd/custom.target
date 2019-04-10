@@ -1,0 +1,7 @@
+# https://www.mauras.ch/systemd-run-it-last.html
+
+[Unit]
+Description=Custom Target
+Requires=multi-user.target
+After=multi-user.target
+AllowIsolate=yes

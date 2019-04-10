@@ -1,0 +1,14 @@
+[Unit]
+Description=YesbitMiner
+Requires=multi-user.target
+After=multi-user.target
+
+[Service]
+ExecStart=start.sh
+ExecStop=stop.sh
+WorkingDirectory=/home/pi/scripts
+StandardOutput=inherit
+StandardError=inherit
+
+[Install]
+WantedBy=custom.target

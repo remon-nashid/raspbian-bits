@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -e
+
 IMAGE="remonyesbit/miner"
+
 CID=$(docker ps | grep $IMAGE | awk '{print $1}')
 LATEST=`docker inspect --format "{{.Id}}" $IMAGE`
 RUNNING=`docker inspect --format "{{.Image}}" $CID`
@@ -19,7 +21,7 @@ if [ "$RUNNING" != "$LATEST" ];then
     docker stop $CONTAINER
     docker wait $CONTAINER
     docker rm -f $CONTAINER
-    ./run.sh
+    ./start.sh
 else
     echo "$CONTAINER is already up to date"
 fi
