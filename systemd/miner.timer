@@ -1,9 +1,0 @@
-[Unit]
-Description=Start miner
-
-[Timer]
-OnBootSec=1sec
-Persistent=true
-
-[Install]
-WantedBy=timers.target

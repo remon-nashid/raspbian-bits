@@ -4,11 +4,10 @@ Requires=multi-user.target
 After=multi-user.target
 
 [Service]
-ExecStart=start.sh
-ExecStop=stop.sh
-WorkingDirectory=/home/pi/scripts
+ExecStart=/bin/sh /home/pi/raspbian-bits/scripts/start.sh
+ExecStop=/bin/sh /home/pi/raspbian-bits/scripts/stop.sh
 StandardOutput=inherit
 StandardError=inherit
 
 [Install]
-WantedBy=custom.target
+WantedBy=latest.target
