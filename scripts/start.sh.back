@@ -12,7 +12,7 @@ echo "CID: $CID"
 if [[ -z "$CID" ]] 
 then 
     echo "No container found. Will start now."    
-    docker run -d -p 3006:3006 -v config:/app/config --name=miner $IMAGE:latest
+    docker run --restart unless-stopped -d -p 3006:3006 -v config:/app/config --name=miner $IMAGE:latest
 fi
 
 

@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+IMAGE="remonyesbit/miner"
+
 #####################
 # System dependencies
 #####################
@@ -24,20 +26,25 @@ else
     echo "Dependencies had been installed."
 fi
 
+#####################
+# Docker
+#####################
+
+docker run --restart unless-stopped -d -p 3006:3006 -v config:/app/config --name=miner $IMAGE:latest
 
 #####################
 # Systemd files
 #####################
 
-echo "Configuring Systemd..."
+# echo "Configuring Systemd..."
 # Create directory
-sudo mkdir -p /etc/systemd/system/latest.target.wants
+# sudo mkdir -p /etc/systemd/system/latest.target.wants
 # Copy our service
 # sudo cp ./systemd/*.service /etc/systemd/system/latest.target.wants/
-sudo cp ./systemd/*.service /etc/systemd/system/
+# sudo cp ./systemd/*.service /etc/systemd/system/
 # Run our target latest
-sudo systemctl isolate latest.target
-sudo ln -sf /etc/systemd/system/latest.target /etc/systemd/system/default.target
+# sudo systemctl isolate latest.target
+# sudo ln -sf /etc/systemd/system/latest.target /etc/systemd/system/default.target
 # Enable service
-sudo systemctl enable --now miner-startup.service
-echo "Complete!"
+# sudo systemctl enable --now miner-startup.service
+# echo "Complete!"
