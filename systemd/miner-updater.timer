@@ -1,0 +1,10 @@
+[Unit]
+Description=Check for YesbitMiner updates daily and on every boot
+
+[Timer]
+OnCalendar=daily
+OnBootSec=20
+Persistent=true
+
+[Install]
+WantedBy=timers.target
