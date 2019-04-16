@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-IMAGE="remonyesbit/miner"
+IMAGE="yesbit/miner"
 CONTAINER="miner"
 
 [[ $(docker ps -f "name=$CONTAINER" --format '{{.Names}}') == "$CONTAINER" ]] ||
