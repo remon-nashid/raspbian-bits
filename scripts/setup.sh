@@ -47,3 +47,9 @@ sudo cp ./systemd/*.{service,timer} /etc/systemd/system/
 # Enable service
 sudo systemctl enable --now miner-updater.service
 echo "Complete!"
+
+#####################
+# Misc files
+#####################
+
+sudo cp ./static/splash.png /usr/share/plymouth/themes/pix/splash.png
