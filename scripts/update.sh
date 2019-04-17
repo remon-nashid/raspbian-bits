@@ -23,7 +23,7 @@ if [ "$RUNNING" != "$LATEST" ];then
     docker stop "$CONTAINER"
     docker wait "$CONTAINER"
     docker rm -f "$CONTAINER"
-    bash /home/pi/raspbian-bits/docker-run.sh
+    bash /home/pi/raspbian-bits/scripts/docker-run.sh
 else
     echo "$CONTAINER is already up to date"
 fi

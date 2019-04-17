@@ -14,13 +14,19 @@ if [ "$(dpkg-query -W -f='${Status}' docker-ce 2>/dev/null | grep -c 'ok install
         curl \
         gnupg2 \
         software-properties-common
-    curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
-    sudo add-apt-repository \
-"deb [arch=armhf] https://download.docker.com/linux/deb ian \
-$(lsb_release -cs) \
-stable"
-    sudo apt-get update
-    sudo apt-get install -y docker-ce docker-ce-cli containerd.io
+
+
+#     curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
+#     sudo add-apt-repository \
+# "deb [arch=armhf] https://download.docker.com/linux/deb ian \
+# $(lsb_release -cs) \
+# stable"
+#     sudo apt-get update
+#     sudo apt-get install -y docker-ce docker-ce-cli containerd.io
+    curl -sSL https://get.docker.com | sudo sh
+    sudo groupadd docker
+    sudo usermod -aG docker $USER
+    sudo su $USER
 else
     echo "Dependencies had been installed."
 fi
@@ -29,7 +35,7 @@ fi
 # Run Docker
 #####################
 
-bash /home/pi/raspbian-bits/docker-run.sh
+bash /home/pi/raspbian-bits/scripts/docker-run.sh
 
 #####################
 # Systemd files
@@ -52,4 +58,4 @@ echo "Complete!"
 # Misc files
 #####################
 
-sudo cp ./static/splash.png /usr/share/plymouth/themes/pix/splash.png
+sudo cp /home/pi/raspbian-bits/static/splash.png /usr/share/plymouth/themes/pix/splash.png
