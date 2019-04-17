@@ -23,10 +23,7 @@ if [ "$(dpkg-query -W -f='${Status}' docker-ce 2>/dev/null | grep -c 'ok install
 # stable"
 #     sudo apt-get update
 #     sudo apt-get install -y docker-ce docker-ce-cli containerd.io
-    curl -sSL https://get.docker.com | sudo sh
-    sudo groupadd docker
-    sudo usermod -aG docker $USER
-    sudo su $USER
+    bash /home/pi/raspbian-bits/scripts/get-docker.sh
 else
     echo "Dependencies had been installed."
 fi
