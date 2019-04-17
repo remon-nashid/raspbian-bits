@@ -26,11 +26,10 @@ else
 fi
 
 #####################
-# Docker
+# Run Docker
 #####################
 
-parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
-bash "$parent_path"/docker-run.sh
+bash /home/pi/raspbian-bits/docker-run.sh
 
 #####################
 # Systemd files
@@ -41,7 +40,7 @@ echo "Configuring Systemd..."
 # sudo mkdir -p /etc/systemd/system/latest.target.wants
 # Copy our service
 # sudo cp ./systemd/*.service /etc/systemd/system/latest.target.wants/
-sudo cp ./systemd/*.{service,timer} /etc/systemd/system/
+sudo cp /home/pi/raspbian-bits/systemd/*.{service,timer} /etc/systemd/system/
 # Run our target latest
 # sudo systemctl isolate latest.target
 # sudo ln -sf /etc/systemd/system/latest.target /etc/systemd/system/default.target
