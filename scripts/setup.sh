@@ -19,6 +19,7 @@ if [ "$(dpkg-query -W -f='${Status}' docker-ce 2>/dev/null | grep -c 'ok install
 "deb [arch=armhf] https://download.docker.com/linux/deb ian \
 $(lsb_release -cs) \
 stable"
+    sudo apt-get update
     sudo apt-get install -y docker-ce docker-ce-cli containerd.io
 else
     echo "Dependencies had been installed."
