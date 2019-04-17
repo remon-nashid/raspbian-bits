@@ -5,7 +5,7 @@ IMAGE="yesbit/miner"
 
 parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
 
-CID=$(docker ps | grep $IMAGE | awk '{print $1}')
+CID=$(docker ps | grep 'miner' | awk '{print $1}')
 LATEST=$(docker inspect --format "{{.Id}}" $IMAGE)
 RUNNING=$(docker inspect --format "{{.Image}}" "$CID")
 CONTAINER=$(docker inspect --format '{{.Name}}' "$CID" | sed "s/\///g")
