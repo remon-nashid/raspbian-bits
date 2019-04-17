@@ -8,7 +8,7 @@ echo "Checking dependencies."
 if [ "$(dpkg-query -W -f='${Status}' docker-ce 2>/dev/null | grep -c 'ok installed')" -eq 0 ]; then
     echo "No docker-ce. Installing..."
     sudo apt-get update
-    sudo apt-get install \
+    sudo apt-get install -y \
         apt-transport-https \
         ca-certificates \
         curl \
@@ -19,7 +19,7 @@ if [ "$(dpkg-query -W -f='${Status}' docker-ce 2>/dev/null | grep -c 'ok install
 "deb [arch=armhf] https://download.docker.com/linux/deb ian \
 $(lsb_release -cs) \
 stable"
-    sudo apt-get install docker-ce docker-ce-cli containerd.io
+    sudo apt-get install -y docker-ce docker-ce-cli containerd.io
 else
     echo "Dependencies had been installed."
 fi
