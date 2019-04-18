@@ -3,14 +3,13 @@ set -e
 
 IMAGE="yesbit/miner"
 
-parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
+sudo docker pull $IMAGE
 
 CID=$(sudo docker ps | grep 'miner' | awk '{print $1}')
 LATEST=$(sudo docker inspect --format "{{.Id}}" $IMAGE)
 RUNNING=$(sudo docker inspect --format "{{.Image}}" "$CID")
 CONTAINER=$(sudo docker inspect --format '{{.Name}}' "$CID" | sed "s/\///g")
 
-docker pull $IMAGE
 
 echo "IMAGE: $IMAGE"
 echo "CID: $CID"
